@@ -1,0 +1,29 @@
+_BASE_: "../Base.yaml"
+
+DATASETS:
+  TRAIN: ("ctw1500_poly_train_rotate_pos",)
+  TEST: ("ctw1500_poly_test",)
+
+MODEL:
+  WEIGHTS: "/media/server/data/lixinru/DPText-DETR/pretained_weight/pretrain.pth" # or the provided pre-trained model
+
+SOLVER:
+  IMS_PER_BATCH: 2
+  BASE_LR: 1e-4
+  LR_BACKBONE: 1e-5
+  WARMUP_ITERS: 0
+  STEPS: (863,) # no step
+  #200epoch
+  MAX_ITER: 172600
+  #保存20个结果
+  CHECKPOINT_PERIOD: 86300
+
+INPUT:
+  MIN_SIZE_TEST: 1000 
+  MAX_SIZE_TEST: 1000
+
+TEST:
+  #1 epoch验证 1次
+  EVAL_PERIOD: 1726
+
+OUTPUT_DIR:  /media/server/data/lixinru/DPText-DETR/output/16pt_new2_juxing_all
