@@ -1,11 +1,5 @@
 # Container Nameplate Text Recognition: Large-Scale Annotated Dataset and Advanced Detection Network
 
-<p align="center">
-  <img src="figures/Samples.png" width="90%">
-</p>
-
----
-
 ## Overview
 
 This is the official repository for **“Container Nameplate Text Detection and Recognition Network with A Large-Scale Annotated Dataset”**.
