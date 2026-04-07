@@ -1,1 +1,1 @@
-export CUDA_VISIBLE_DEVICES=1; python tools/train_net.py --config-file ./configs/DPText_DETR/CTW1500/R_50_poly.yaml
+export CUDA_VISIBLE_DEVICES=1; python tools/train_net.py --config-file ./configs/Resnet50.yaml
