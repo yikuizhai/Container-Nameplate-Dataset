@@ -1,41 +1,89 @@
 # Container Nameplate Text Recognition: Large-Scale Annotated Dataset and Advanced Detection Network
-<img width="411" alt="image" src="https://github.com/user-attachments/assets/32ce5c88-1f29-4135-8a54-b4548ed836fa">\\
 
+<p align="center">
+  <img src="figures/Samples.png" width="90%">
+</p>
 
-<img width="415" alt="image" src="https://github.com/user-attachments/assets/86ea1ee0-2fc7-414e-a385-ebcfcb1c014c">
+---
 
-  To obtain the Container Nameplate dataset: 1. Use the school's email address (edu, stu, etc.) and send an email to: yikuizhai@126.com 2. Sign the relevant agreement to ensure that it will only be used for scientific research and not for commercial purposes.A scanned version of the agreement that requires a handwritten signature. Both Chinese and English signatures are acceptable. 3. Authorization will be obtained in 1-3 days. (Notice: If you use this dataset as the benchmark dataset for your paper, please cite the paper in eula.pdf)
+## Overview
 
-#The text detection benchmark of CNP dataset
+This is the official repository for **“Container Nameplate Text Detection and Recognition Network with A Large-Scale Annotated Dataset”**.
 
-Method|Label|Backbone|Hmean|Precision|Recall
+---
 
-PCENet|Polygon|Resnet50|0.833|0.838|0.828
+## Abstract
 
-SAST|Polygon|Resnet50|0.855|0.831|0.882
+The container nameplate includes essential identification information, which is crucial for logistics management. The task of text detection and recognition on nameplates is vital for parsing information on containers, representing a critical step in container management. However, this research field lacks a large-scale annotated dataset of nameplate images. 
 
-EAST|Polygon|Resnet50|0.892|0.886|0.898
+To address this issue, we propose a large-scale annotated nameplate dataset for the implementation of container nameplate detection and recognition, called **CNP dataset**. It comprises **84,813 annotated instances** from **2,161 high-definition nameplate images**, obtained through a semi-supervised data annotation method for label acquisition. 
 
-Deformable DETR|Rectangular|Resnet50|0.747|0.821|0.783
+Moreover, to establish an effective benchmark pipeline for this task, we develop a two-stage Text Detection and Recognition Network (**TDRNet**). In the detection stage, TDRNet introduces a point-guided polygon detection design within a transformer-based framework, where uniformly distributed control points are used as polygon query points to improve geometric representation and localization robustness for dense and elongated nameplate text. In the recognition stage, TDRNet employs an existing recognition model as a reliable component of the overall pipeline. 
 
-RT-DETR|Rectangular|Resnet50|0.758|0.815|0.785
+We further evaluate the dataset using representative scene text detection and recognition methods to provide benchmark results for future research.
 
-Ours|Polygon Point|Resnet50|0.963|0.959|0.966
+---
 
+## Representative Samples of the CNP Dataset
 
+<p align="center">
+  <img src="figures/Samples.png" width="85%">
+</p>
 
-#The text recognition benchmark of CNP dataset
+The dataset includes diverse container nameplate images under real-world industrial conditions, including variations in lighting, reflection, blur, and perspective distortion.
 
-Method|Optimizer|Backbone|Accuracy
+---
 
-SVTR|Adam|Resnet50|0.921
+## Data Acquisition
 
-NRTR|Adam|NRTR_MTB|0.890
+<p align="center">
+  <img src="figures/Data_Acquisition.png" width="85%">
+</p>
 
-ABI-Net|Adam|Resnet45|0.942
+The data acquisition system eliminates factors that interfere with image collection in complex workshop environments, resulting in high-quality image data.
 
-Star-Net|Adam|MobileNetv3|0.873
+---
 
-SRN-Net|Adam|Resnet50|0.960
+## Nameplate Information and TDRNet
 
-The code will be released soon.
+<p align="center">
+  <img src="figures/TDRNet.jpg" width="85%">
+</p>
+
+Container nameplates often contain dense, structured, and elongated text regions. These characteristics introduce significant challenges for both detection and recognition tasks. The proposed TDRNet framework enhances the robustness and accuracy of text detection under such challenging conditions.
+
+---
+
+## Dataset Access
+
+To obtain the CNP dataset:
+
+1. Use your institutional email address (edu, stu, etc.).
+2. Send an email request to: **yikuizhai@126.com**
+3. Sign the required agreement to ensure that the dataset is used only for scientific research and not for commercial purposes.
+
+**Note:**  
+If you use this dataset as a benchmark dataset for your research, please cite the corresponding paper in `eula.pdf`.
+
+**Baidu Link:**  
+https://pan.baidu.com/s/1fLJAx607ETxGezIZX1hTMg  
+
+(Access will be granted after the paper is accepted.)
+
+---
+
+## Dataset Preparation
+
+The dataset is organized as follows:
+
+```text
+data/
+├── train_data/
+├── train_rec_data/
+├── val_data/
+├── val_rec_data/
+└── annotations/
+    ├── train_data.txt
+    ├── val_data.txt
+    ├── train_rec_gt.txt
+    └── val_rec_gt.txt
